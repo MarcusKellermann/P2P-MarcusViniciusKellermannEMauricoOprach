@@ -69,3 +69,19 @@ A remocao tambem deve ser propagada. O peer verifica os arquivos periodicamente;
 Substitua `127.0.0.1` pelo endereco IP acessivel de cada computador. Configure em cada peer a lista dos outros enderecos e portas, permita o trafego UDP no firewall e confirme que as maquinas estao na mesma rede ou possuem conectividade entre si. `127.0.0.1` so funciona para processos na mesma maquina.
 
 Depois de reiniciar um peer, os peers configurados trocam novamente suas listas de arquivos para recuperar a sincronizacao.
+
+## Cliente TCP complementar
+
+O arquivo `client.py` contem uma implementacao cliente TCP separada do peer UDP acima. Ele monitora um diretorio e troca mensagens com um servidor TCP compativel. Para usar esse cliente, instale a dependencia:
+
+```powershell
+python -m pip install watchdog
+```
+
+O cliente recebe o endereco e a porta do servidor e, opcionalmente, o diretorio compartilhado:
+
+```powershell
+python .\client.py --host 127.0.0.1 --port 6001 --dir .\tmp_cliente
+```
+
+Este repositorio nao inclui um servidor TCP compativel com `client.py`; portanto, esse comando so conecta quando tal servidor estiver em execucao no endereco e porta informados. O cliente TCP nao se conecta diretamente aos peers UDP iniciados com `p2p.py`.
