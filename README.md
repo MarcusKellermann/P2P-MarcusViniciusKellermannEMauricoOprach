@@ -1,4 +1,5 @@
 # Sistema P2P de sincronizacao de arquivos
+# Feito por Marcus Vinicius Kellermann e Mauricio Oprach
 
 Projeto academico de sincronizacao distribuida de arquivos entre peers usando UDP. Cada peer monitora seu diretorio local, anuncia arquivos novos ou alterados e propaga remocoes para os demais peers configurados.
 
